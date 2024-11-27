@@ -9,6 +9,11 @@ import { AuthProvider } from './context/AuthContext';
 import { PrivateRoute } from './components/PrivateRoute';
 import { LoginPage } from './pages/LoginPage';
 import { Dashboard } from './pages/Dashboard';
+import { NewSale } from './pages/sales/NewSale';
+import { SalesHistory } from './pages/sales/SaleHistory';
+import {InventoryManagement} from './pages/Inventory/index';
+import {CustomerList} from './pages/customers/CustomerList';
+
 
 // Configuration des flags futurs de React Router
 const router = {
@@ -32,6 +37,28 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route path='/new-sale' element={
+            <PrivateRoute>
+              <NewSale />
+            </PrivateRoute>
+          }/>
+          <Route path='/history' element={
+            <PrivateRoute>
+              <SalesHistory />
+            </PrivateRoute>
+          }/>
+
+          <Route path='/inventory/*' element={
+            <PrivateRoute>
+              <InventoryManagement />
+            </PrivateRoute>
+          }/>
+          <Route path='/customers' element={
+            <PrivateRoute>
+              <CustomerList />
+            </PrivateRoute>
+          } />
+
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
         </Routes>
       </AuthProvider>
