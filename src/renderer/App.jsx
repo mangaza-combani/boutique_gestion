@@ -12,7 +12,11 @@ import { Dashboard } from './pages/Dashboard';
 import { NewSale } from './pages/sales/NewSale';
 import { SalesHistory } from './pages/sales/SaleHistory';
 import {InventoryManagement} from './pages/Inventory/index';
-import {CustomerList} from './pages/customers/CustomerList';
+import {CustomerManagement} from './pages/customers';
+import {SaleDetails} from './pages/sales/SaleDetails';
+import CashRegisterSystem from './pages/caisse/CashRegisterSystem.jsx';
+import AdminPanel from './pages/admin/AdminPanel.jsx';
+
 
 
 // Configuration des flags futurs de React Router
@@ -42,6 +46,11 @@ function App() {
               <NewSale />
             </PrivateRoute>
           }/>
+            <Route path='/sales/:id' element={
+            <PrivateRoute>
+              <SaleDetails/>
+            </PrivateRoute>
+          }/>
           <Route path='/history' element={
             <PrivateRoute>
               <SalesHistory />
@@ -53,9 +62,19 @@ function App() {
               <InventoryManagement />
             </PrivateRoute>
           }/>
-          <Route path='/customers' element={
+          <Route path='/customers/*' element={
             <PrivateRoute>
-              <CustomerList />
+              <CustomerManagement/>
+            </PrivateRoute>
+          } />
+          <Route path='/cash-register' element={
+            <PrivateRoute>
+              <CashRegisterSystem/>
+            </PrivateRoute>
+          } />
+          <Route path='/admin' element={
+            <PrivateRoute>
+              <AdminPanel/>
             </PrivateRoute>
           } />
 

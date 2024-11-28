@@ -18,6 +18,7 @@ import {
   BarChart as StatsIcon,
   Inventory as InventoryIcon,
   People as CustomersIcon,
+  AdminPanelSettings as AdminPanelSettingsIcon,
   Settings as SettingsIcon,
   ExitToApp as LogoutIcon,
   AttachMoney as CashIcon,
@@ -64,7 +65,21 @@ export const Dashboard = () => {
 
   const menuItems = [
     {
-      title: 'caisse',
+      title: 'Administration',
+      icon: <AdminPanelSettingsIcon sx={{ fontSize: 40 }} />,
+      color: '#D32F2F', // Rouge pour distinguer l'administration
+      onClick: () => navigate('/admin'),
+      description: 'Configuration du système',
+      requireAdmin: true, // Pour contrôler l'affichage selon le rôle
+      features: [
+        'Gestion des utilisateurs',
+        'Configuration des rôles',
+        'Paramètres système',
+        'Personnalisation des documents'
+      ]
+    },
+    {
+      title: 'Encaissement',
       icon: <CartIcon sx={{ fontSize: 40 }} />,
       color: theme.palette.primary.main,
       onClick: () => navigate('/new-sale'),
